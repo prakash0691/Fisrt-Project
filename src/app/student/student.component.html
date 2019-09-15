@@ -1,0 +1,29 @@
+<form ngForm #studentForm = "ngForm" (ngSubmit) = "registerStudent(studentForm)">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" email class="form-control" ngModel name = "email" #email = "ngModel" id="email" required placeholder="Enter your email">
+    <div class="alert alert-danger" *ngIf = "email.touched && email.invalid">
+        <div *ngIf = "email.errors.required">Please enter your Email</div>
+        <div *ngIf = "email.errors.email">Please enter a valid Email</div>
+    </div>
+    </div>
+    
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="name" class="form-control" ngModel name = "name" #name = "ngModel" id="name" required minlength = "3" placeholder="Enter your Name">
+    <div class="alert alert-danger" *ngIf = "name.touched && name.invalid">
+        <div *ngIf = "name.errors.required">Please enter your Name</div>
+    <div *ngIf = "name.errors.minlength">Please enter minimum {{name.errors.minlength.requiredLength}} character </div>    
+    </div>
+    </div>
+
+    <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input type="mobile" class="form-control" ngModel name = "mobile" #mobile = "ngModel" required minlength = "10" maxlength="10" id="mobile" placeholder="Enter your Mobile Number">
+    <div class="alert alert-danger" *ngIf = "mobile.touched && mobile.invalid">
+        <div *ngIf = "mobile.errors.required">Please enter your Mobile Number</div>
+        <div *ngIf = "mobile.errors.minlength">Please enter {{mobile.errors.minlength.requiredLength}} Number</div> 
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled] = "studentForm.invalid">Submit</button>
+</form>

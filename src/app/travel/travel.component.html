@@ -1,0 +1,79 @@
+<!-- <app-login *ngIf ="isLoggedin"></app-login> -->
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+        <h3 class="text-secondary">Online Travel Tickets Booking</h3>
+    </nav>
+</header>
+
+<br><br>
+<form   ngForm  #registerForm="ngForm"  (ngSubmit)="addBooking(registerForm)">
+    <div class="col-md-4 mb-3">
+        <i class="fas fa-location-arrow"></i>
+        <label for="from">Travel From</label>
+        <input type="from" id="from" class="form-control" required uppercase ngModel name="from" #from="ngModel"
+            placeholder="Enter From Address">
+        <div class="alert alert-danger" *ngIf="from.touched && from.invalid">
+            <div *ngIf="from.errors.required">Please Enter the From Address</div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <i class="fas fa-location-arrow"></i>
+        <label for="to">Travel To</label>
+        <input type="to" id="to" class="form-control" required uppercase ngModel name="to" #to="ngModel"
+            placeholder="Enter To Address">
+        <div class="alert alert-danger" *ngIf="to.touched && to.invalid">
+            <div *ngIf="to.errors.required">Please enter the To Address</div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <i class="fas fa-calendar-alt"></i>
+        <label for="date">Travel Date</label>
+        <input type="date" id="date" class="form-control" required ngModel name="date" #date="ngModel"
+           placeholder="Select Date ">
+        <div class="alert alert-danger" *ngIf="date.touched && date.invalid">
+            <div *ngIf="date.errors.required">PLease slest the Travel Date</div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Book Tickets</button>
+</form>
+
+<br><br><br>
+<div class="container" *ngIf="output.length > 0">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">From Address</th>
+                <th scope="col">To Address</th>
+                <th scope="col">Travel Date</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let data of output; index as i">
+                <th scope="row">{{i+1}}</th>
+                <td>{{data.from}}</td>
+                <td>{{data.to}}</td>
+                <td>{{data.date}}</td>
+                <td (click)="delete(i)">
+                    <i class="fa fa-trash"></i>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+    <footer class="page-footer font-small blue pt-4">
+
+            <div class="footer-copyright text-center py-3">© 2019 Copyright:
+                    <a href="https://mdbootstrap.com/education/bootstrap/"> OnlineTickets.com</a>
+                  </div>
+    </footer>
+
+
+    
+    

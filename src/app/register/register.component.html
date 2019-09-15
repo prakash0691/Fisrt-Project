@@ -1,0 +1,34 @@
+<form [formGroup]="registerForm">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" class="form-control" formControlName="email" name="email" id="email"
+            placeholder="Enter your email">
+        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+            <div *ngIf="email.errors.required">Please enter your Email</div>
+            <div *ngIf="email.errors.email">Please enter a valid Email</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="name" class="form-control" formControlName="name" name="name" id="name"
+            placeholder="Enter your Name">
+        <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+            <div *ngIf="name.errors.required">Please enter your Name</div>
+            <div *ngIf="name.errors.minlength">Please enter minimum {{name.errors.minlength.requiredLength}} character </div>
+            <div *ngIf="name.errors.usernameshouldnothavespace">Name should not have space</div>
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="mobile">Mobile</label>
+        <input type="mobile" class="form-control" formControlName="mobile" name="mobile" id="mobile"
+            placeholder="Enter your Mobile Number">
+        <div class="alert alert-danger" *ngIf="mobile.touched && mobile.invalid">
+            <div *ngIf="mobile.errors.required">Please enter your Mobile Number</div>
+            <div *ngIf="mobile.errors.minlength">Please enter {{mobile.errors.minlength.requiredLength}} Number</div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

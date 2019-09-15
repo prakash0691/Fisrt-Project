@@ -1,0 +1,67 @@
+<form ngForm #studentAddress="ngForm" (ngSubmit) = "registerAddress(studentAddress)">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" email ngModel name="email" #email="ngModel" required id="email"
+                placeholder="Enter Email Address">
+            <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                <div *ngIf="email.errors.required">Please enter the Email address</div>
+                <div *ngIf="email.errors.email">Please enter the Valid Email Address</div>
+            </div>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" ngModel name="password" #password="ngModel" required
+                id="password" placeholder="Enter Password">
+            <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                <div *ngIf="password.errors.required">Please enter the Password</div>
+            </div>
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <label for="addrress">Address</label>
+        <input type="address" class="form-control" ngModel name = "address" #address = "ngModel" required id="address" placeholder="1234 Main St">
+    <div class="alert alert-danger" *ngIf = "address.touched && address.invalid">
+        <div *ngIf = "address.errors.required">Please enter the Address</div>
+    </div>
+    
+    </div>
+    <div class="form-group">
+        <label for="address2">Address 2</label>
+        <input type="address2" class="form-control" ngModel name ="address2" #address2 = "ngModel" required id="address2" placeholder="Apartment, studio, or floor">
+    <div class="alert alert-danger" *ngIf = "address2.touched && address2.invalid">
+<div *ngIf = "address2.errors.required">Please enter address</div>
+    </div>
+   </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="city">City</label>
+            <input type="city" class="form-control" ngModel name ="city" #city = "ngModel" required id="city">
+        <div class="alert alert-danger" *ngIf = "city.touched && city.invalid">
+            <div *ngIf = "city.errors.required">Please enter City</div>
+
+        </div>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="state">State</label>
+            <input type="state" class="form-control" ngModel name ="state" #state = "ngModel" required id="state">
+      <div class="alert alert-danger" *ngIf = "state.touched && state.invlaid">
+          <div *ngIf = "state.errors.required">Please enter state</div>
+
+      </div>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="zip">Zip</label>
+            <input type="zip" class="form-control" pattern = "^[0-9]*$"ngModel name = "zip" #zip = "ngModel" minlength = "6" maxlength = "6" required id="zip">
+            <div class="alert alert-danger" *ngIf = "zip.touched && zip.invalid">
+                <div *ngIf = "zip.errors.required">Please enter the Zip</div>
+                <div *ngIf = "zip.errors.minlength">Please enter valid {{zip.errors.minlength.requiredLength}}  Number</div>
+                <div *ngIf = "zip.errors.pattern">Please enter only Numbers</div>
+
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled] = "studentAddress.invalid">Sign in</button>
+</form>

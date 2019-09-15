@@ -1,0 +1,28 @@
+<!-- ----Property Binding----- -->
+<h1>Property Binding</h1>
+<h3>Today's Offer: {{getToOffer()}}</h3>
+<h3>Today's Price: {{price}}</h3>
+<h3>My Emp Id is: {{empid}}</h3>
+
+
+<!-- ----Style Binding---- -->
+<h1>Style Binding</h1>
+<h2 [style.color]='myColor' >Prakash</h2>
+<h2 [style.color] ="myName ? 'red':'green'">Prakash</h2>
+
+<!-- ----Event Binding--------------One Way--- -->
+<h1>Event Binding</h1>
+Enter Resources Name: <input type="text" (keyup)="nameEntered($event)">
+Enter Resources Name: <input type="text" #item> <button (click)="addName(item)">Add</button>
+
+<!-- ----Two Way Binding----- -->
+
+Enter Product Name: <input type="text" [(ngModel)]="product">
+<h3>Item Enter: {{product}}</h3>
+
+<!-- <--------Pipes------------>
+<h1>Pipes</h1>
+<h3>Today Offer: {{todayOffer | capitalize:3}}</h3>
+<h4>Today Date: {{ date | date : 'MM-dd-yyyy'}}</h4>
+<h3>Today Price: {{ price | currency: 'INR':'code'}}</h3>
+<h4>Today interest: {{ interest | percent}}</h4>
